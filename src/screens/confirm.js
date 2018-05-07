@@ -1,8 +1,25 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, TouchableHighlight, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableHighlight, Image, ScrollView, TouchableOpacity, TextInput } from 'react-native';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button'
 // import LinearGradient from 'react-native-linear-gradient';
+import Accordion from 'react-native-collapsible/Accordion';
 
+const SECTIONS = [
+  {
+    title: 'Sender',
+    address: 'Jalan sudirman no 7',
+    content: 'Lorem ipsum...'
+  },
+  {
+    title: 'Receiver 1',
+    content: 'Lorem ipsum...'
+  },
+  {
+    title: 'Receiver 2',
+    content: 'Lorem ipsum...'
+  },
+
+];
 
 var radio_props = [
   {label: 'Sender', value: 0 },
@@ -23,6 +40,45 @@ class Confirm extends Component {
       value: 0
     }
   }
+
+  _renderHeader(section) {
+    return (
+      <View style={styles.header}>
+        <Image
+          source={require('../assets/marker.png')} style={{width: 18, height: 22, marginRight: 10, marginTop:2}}
+        />
+        <View>
+          <Text>{section.title}</Text>
+          <Text style={{color: '#999', fontSize:14}}
+            // onPress={()=> this.props.navigation.navigate('Pickup')}
+          >{section.address}</Text>
+        </View>
+      </View>
+    );
+  }
+
+  _renderContent(section) {
+    return (
+      <View>
+      <View style={styles.content}>
+        <Image
+          source={require('../assets/profile.png')} style={{width: 25, height: 25, marginRight: 10, marginTop:5}}
+        />
+        <TextInput style={{height: 40, width: '100%'}} placeholder='Name'/>
+      </View>
+      <View style={styles.content}>
+        <Image
+          source={require('../assets/phone.png')} style={{width: 25, height: 25, marginRight: 10, marginTop:5}}
+        />
+        <TextInput style={{height: 40, width: '100%'}} placeholder='Phone Number'/>
+      </View>
+      <View style={styles.content}>
+        <TextInput style={{height: 40, width: '100%', marginLeft: 33}} placeholder='Notes, Intruction or Location Detail'/>
+      </View>
+      </View>
+    );
+  }
+
   render() { 
     return ( 
       <View>
@@ -36,6 +92,11 @@ class Confirm extends Component {
             </View>
             <View style={styles.contact}>
               <Text>Enter contact number (sender and receiver) {'\n'}and note for the driver.</Text>
+              <Accordion
+                sections={SECTIONS}
+                renderHeader={this._renderHeader}
+                renderContent={this._renderContent}
+              />
             </View> 
           </View>
           <View style={styles.payment}>
@@ -215,6 +276,15 @@ const styles = StyleSheet.create({
   radio:{
     marginTop: 20,
     marginBottom: 10
+  },
+  header: {
+    flexDirection: 'row',
+    marginBottom: 5
+  },
+  content: {
+    paddingLeft: '7%',
+    paddingRight: '7%',
+    flexDirection: 'row'
   }
 })
  

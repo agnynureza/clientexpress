@@ -44,7 +44,7 @@ class Pickup extends Component {
               <Text style={{color: '#999'}}>Queen Street V no. 18d</Text>
             </View>
             <Image
-              source={require('../assets/star.png')} style={{width: 25, height: 25, marginRight: 10,marginLeft:10 , marginTop:5}}
+              source={require('../assets/starcolor.png')} style={{width: 25, height: 25, marginRight: 10,marginLeft:10 , marginTop:5}}
             />
           </TouchableOpacity>
           <TouchableOpacity style={[styles.card, styles.card2]}>
@@ -53,7 +53,7 @@ class Pickup extends Component {
               <Text style={{color: '#999'}}>King Street VI no. 19</Text>
             </View>
             <Image
-              source={require('../assets/star.png')} style={{width: 25, height: 25, marginRight: 10,marginLeft:10 , marginTop:5}}
+              source={require('../assets/starcolor.png')} style={{width: 25, height: 25, marginRight: 10,marginLeft:10 , marginTop:5}}
             />
           </TouchableOpacity>
           <TouchableOpacity style={[styles.card, styles.card2]}>
